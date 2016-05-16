@@ -63,7 +63,7 @@ uploads/*
 .idea/
 
 # Settings Develop
-lingvo/settings_develop.py
+lingvo/lingvo/settings_develop.py
 
 # Node, Grunt 
 node_modules/
