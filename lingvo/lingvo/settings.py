@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'profile',
-    'language'
+    'language',
+    'meeting'
 ]
 
 MIDDLEWARE_CLASSES = [
