@@ -64,6 +64,8 @@ uploads/*
 
 # Settings Develop
 lingvo/lingvo/settings_develop.py
+lingvo/settings_develop.py
+settings_develop.py
 
 # Node, Grunt 
 node_modules/
