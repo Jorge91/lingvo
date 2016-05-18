@@ -5,7 +5,7 @@ from profile.settings import GENRES
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, name='user')
+    user = models.ForeignKey(User, related_name='user')
     description = models.TextField()
     genre = models.CharField(max_length=3, choices=GENRES)
     picture = models.ImageField(upload_to='/profiles')

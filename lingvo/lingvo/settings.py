@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_auth',
     'profile',
     'language',
-    'meeting'
+    'meeting',
+    'chat'
 ]
 
 MIDDLEWARE_CLASSES = [
