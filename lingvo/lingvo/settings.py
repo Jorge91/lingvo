@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     'profile',
     'language',
     'meeting',
@@ -136,3 +140,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+CSRF_HEADER_NAME = 'CSRF_COOKIE'
+
+ENV_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+MEDIA_ROOT = os.path.join(ENV_PATH, 'media')
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+APPEND_SLASH = True
