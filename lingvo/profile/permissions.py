@@ -7,3 +7,4 @@ class ProfilePermission(CustomActionPermissions):
         if view.action == 'update' or view.action == 'partial_update':
             return obj.user == request.user
         return True
+
