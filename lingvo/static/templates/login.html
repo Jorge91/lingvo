@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html ng-app="login">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" href="{% static "built/style.css" %}">
+    <script type="text/javascript" src="{% static "built/login.js" %}"></script>
+
+</head>
+
+<body>
+{% verbatim %}
+
+<div class="body"></div>
+<div class="grad"></div>
+<div class="login" ng-controller="LoginCtrl">
+    <h1>lingvo</h1>
+    <ng-form name="myForm">
+    <input type="text" placeholder="username" ng-model="username" required><br>
+    <input type="email" placeholder="email" ng-model="email" required><br>
+    <input type="password" placeholder="password" ng-model="password" required><br>
+    <input type="password" placeholder="repeat password" ng-model="password2" ng-required="mode == 'Register'" ng-show="mode == 'Register'"><br>
+    <input type="button" ng-click="makeRequest()" ng-disabled="myForm.$valid == false" value="{{ mode }}">
+        </ng-form>
+    <br><br>
+    <input type="button" ng-click="changeMode()" value="Login/Register">
+    <br><br><br>
+    <div class="alert alert-danger" role="alert" ng-show="errors">{{ errors }}</div>
+</div>
+{% endverbatim %}
+</body>
+</html>
