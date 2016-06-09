@@ -16,12 +16,15 @@ module.exports = function(grunt) {
             app: {
                 src: [
                     // libs
-                    'bower_components/angular/angular.min.js',
+                    'bower_components/angular/angular.min.js',                     
                     'bower_components/angular-route/angular-route.min.js',
                     'bower_components/angular-cookies/angular-cookies.min.js',
                     'bower_components/angular-translate/angular-translate.min.js',
                     'bower_components/angular-resource/angular-resource.min.js',
-                    'bower_components/angular-sanitize/angular-sanitize.min.js',
+                    'bower_components/angular-animate/angular-animate.min.js',
+                    'bower_components/angular-messages/angular-messages.min.js',
+                    'bower_components/angular-aria/angular-aria.min.js',
+                    'bower_components/angular-material/angular-material.min.js',
                     'bower_components/angular-translate/angular-translate.min.js',
                     'bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
                     'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
@@ -36,6 +39,8 @@ module.exports = function(grunt) {
                     'static/js/app.js',
                     'static/js/services/*.js',
                     'static/js/controllers/*.js',
+                    'static/js/controllers/main/*.js',
+                    'static/js/controllers/profile/*.js',
                     'static/js/directives/*.js',
                     'static/js/filters/*.js',
                     'static/js/authentication/services/*.js',
@@ -55,6 +60,14 @@ module.exports = function(grunt) {
 
                 ],
                 dest: 'static/built/login.js'
+            },
+            style: {
+                src: [
+                    'bower_components/angular-material/modules/closure/menu/menu.min.css',
+                    'bower_components/angular-material/angular-material.css',
+                    'static/styles/style.css'
+                ],
+                dest: 'static/built/style.css'
             }
 
         },
@@ -79,7 +92,8 @@ module.exports = function(grunt) {
                     optimization: 2
                 },
                 files: {
-                    "static/built/style.css": "static/styles/style.less",
+                    "static/styles/style.css": ["static/styles/style.less"],
+                    "static/built/login.css": ["static/styles/login.less"],
                 }
             }
         },

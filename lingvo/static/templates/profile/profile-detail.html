@@ -1,0 +1,71 @@
+<div ng-controller="ProfileDetailCtrl">
+    <div ng-cloak>
+        <div>
+            <md-card>
+                <md-card-title>
+
+                    <md-card-title-text>
+                        <span class="md-headline" style="color: #000">{{ profile.user.username }}</span>
+                        <span class="md-subhead">{{ profile.description }}</span>
+                        <span class="md-subhead">{{ calculateAge(profile.born_date) }} years</span>
+                    </md-card-title-text>
+
+                    <md-card-title-media>
+                        <div class="md-media-md card-media">
+                            <img class="img-circle" src="media/{{ profile.picture }}" width="20px">
+                        </div>
+                    </md-card-title-media>
+
+                </md-card-title>
+
+            </md-card>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <md-card>
+                        <md-toolbar layout="row" class="md-hue-3 _md layout-row">
+                            <div class="md-toolbar-tools">
+                                <span>Already speaks</span>
+                            </div>
+                        </md-toolbar>
+
+                        <md-list>
+                            <md-list-item class="md-2-line" ng-repeat="lang in profile.speaks" ng-click="null">
+                                <img ng-src="{{ lang.language.flag }}" class="md-avatar"/>
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ lang.language.name }}</h3>
+
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-card>
+                </div>
+                <div class="col-md-6">
+                    <md-card>
+                        <md-toolbar layout="row" class="md-hue-3 _md layout-row">
+                            <div class="md-toolbar-tools">
+                                <span>Wants to learn</span>
+                            </div>
+                        </md-toolbar>
+
+                        <md-list>
+                            <md-list-item class="md-2-line" ng-repeat="lang in profile.practices" ng-click="null">
+                                <img ng-src="{{ lang.language.flag }}" class="md-avatar"/>
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ lang.language.name }}</h3>
+
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-card>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</div>

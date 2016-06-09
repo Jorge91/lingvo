@@ -1,0 +1,106 @@
+<div ng-controller="ProfileEditCtrl">
+    <div ng-cloak>
+
+
+        <div>
+            <md-card>
+                <md-card-title>
+
+                    <md-card-title-text>
+                        <span class="md-headline" style="color: #000">{{ profile.user.username }}</span><br>
+                        <md-input-container>
+                            <input ng-model="edit_profile.description" type="text" placeholder="Description">
+                        </md-input-container>
+
+
+                        <md-grid-list md-cols-gt-md="9" md-cols-md="6" md-cols-sm="3" md-gutter="12px"
+                                      md-row-height="1:1">
+                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+                                <md-input-container>
+                                    <md-radio-group ng-model="edit_profile.genre">
+                                        <md-radio-button value="MSC" class="md-primary">Boy</md-radio-button>
+                                        <md-radio-button value="FMN">Girl</md-radio-button>
+                                    </md-radio-group>
+                                </md-input-container>
+                            </md-grid-tile>
+                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+                                <label for="date" class="md-warn">Born date:</label>
+                                <md-datepicker ng-model="edit_profile.born_date"
+                                               md-placeholder="Enter date"></md-datepicker>
+                            </md-grid-tile>
+                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+
+                            </md-grid-tile>
+                            <md-grid-tile md-colspan-gt-md="1" md-colspan-md="1" md-colspan-sm="1">
+                                <md-button class="md-warn md-raised" ng-click="updateProfile()">Update</md-button>
+                            </md-grid-tile>
+                        </md-grid-list>
+
+                    </md-card-title-text>
+
+
+                    <md-card-title-media>
+                        <div class="md-media-md card-media">
+                            <img class="img-circle" src="media/{{ profile.picture }}"
+                                 ng-click="showPrerenderedDialog($event)">
+                        </div>
+                        <!--<div ngf-drop ngf-select ng-model="files" class="drop-box"
+                             ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"
+                             accept="image/*,application/pdf"
+                             ngf-pattern="'image/*,application/pdf'">Drop images here
+                        </div>-->
+                    </md-card-title-media>
+
+
+                </md-card-title>
+
+            </md-card>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <md-card>
+                        <md-toolbar layout="row" class="md-hue-3 _md layout-row">
+                            <div class="md-toolbar-tools">
+                                <span>Already speaks</span>
+                            </div>
+                        </md-toolbar>
+
+                        <md-list>
+                            <md-list-item class="md-2-line" ng-repeat="lang in profile.speaks" ng-click="null">
+                                <img ng-src="{{ lang.language.flag }}" class="md-avatar"/>
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ lang.language.name }}</h3>
+
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-card>
+                </div>
+                <div class="col-md-6">
+                    <md-card>
+                        <md-toolbar layout="row" class="md-hue-3 _md layout-row">
+                            <div class="md-toolbar-tools">
+                                <span>Wants to learn</span>
+                            </div>
+                        </md-toolbar>
+
+                        <md-list>
+                            <md-list-item class="md-2-line" ng-repeat="lang in profile.practices" ng-click="null">
+                                <img ng-src="{{ lang.language.flag }}" class="md-avatar"/>
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ lang.language.name }}</h3>
+
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

@@ -151,7 +151,8 @@ REST_FRAMEWORK = {
 CSRF_HEADER_NAME = 'CSRF_COOKIE'
 
 ENV_PATH = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-MEDIA_ROOT = os.path.join(ENV_PATH, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 APPEND_SLASH = True
@@ -183,4 +184,5 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'bower_components'),
 ]

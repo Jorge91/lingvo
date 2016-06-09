@@ -5,7 +5,7 @@ from django.db import models
 class Language(models.Model):
     code = models.CharField(unique=True, max_length=10)
     name = models.CharField(max_length=30, null=True, blank=True)
-    flag = models.ImageField(upload_to='/flags', blank=True, null=True)
+    flag = models.ImageField(upload_to='flags', blank=True, null=True)
 
     def __unicode__(self):
         return unicode(self.code)

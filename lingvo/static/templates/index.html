@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html ng-app="lingvo">
 <head>
@@ -6,18 +7,103 @@
     <meta name="google" value="notranslate"/>
     <title>Lingvo</title>
     <meta name="description" content="Lingvo">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../built/style.css">
+    <link rel="stylesheet" href="{% static "built/style.css" %}">
+    <script type="text/javascript" src="{% static "built/app.js" %}"></script>
 </head>
 <body>
-hola
-    <div class="container">
-        <ng-view></ng-view>
-    </div>
+{% verbatim %}
 
-<script type="text/javascript" src="../built/app.js"></script>
+
+<div ng-controller="MainCtrl" layout="column" style="height:500px;" ng-cloak="" class="sidenavdemoBasicUsage">
+
+    <section layout="row" style="min-height: 100em" flex="">
+
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"
+                    md-disable-backdrop="" md-whiteframe="4">
+
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Sidenav Left</h1>
+            </md-toolbar>
+            <md-content layout-padding="" ng-controller="LeftCtrl">
+                <ul>
+                    <li>
+                        <md-button class="md-primary" href="#/people/" ng-click="close()">
+                            People
+                        </md-button>
+                    </li>
+                    <li>
+                        <md-button class="md-primary" href="#/profile/" ng-click="close()">
+                            My profile
+                        </md-button>
+                    </li>
+                    <li>
+                        <md-button class="md-primary" href="#/meetings/" ng-click="close()">
+                            Search meetings
+                        </md-button>
+                    </li>
+                    <li>
+                        <md-button class="md-primary" href="#/my-meetings/" ng-click="close()">
+                            My meetings
+                        </md-button>
+                    </li>
+
+                    <li>
+                        <md-button class="md-primary" href="#/chats/" ng-click="close()">
+                            Opened chats
+                        </md-button>
+                    </li>
+                    <li></li>
+                    <li>
+                        <md-button ng-click="close()" class="md-default" hide-gt-md="">
+                            Close
+                        </md-button>
+                    </li>
+                </ul>
+                <md-button ng-click="close()" class="md-primary" hide-gt-md="">
+                    Close Sidenav Left
+                </md-button>
+
+            </md-content>
+
+        </md-sidenav>
+
+        <div flex="" layout-padding="">
+
+            <div layout="column" layout-fill="" layout-align="">
+                <div>
+                        <md-button ng-click="toggleLeft()" class="md-primary md-raised" hide-gt-md="">
+                            Menu
+                        </md-button>
+                        <div class="">
+                            <ng-view></ng-view>
+                        </div>
+                    </div>
+            </div>
+
+            <div flex=""></div>
+
+        </div>
+
+
+    </section>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+{% endverbatim %}
 </body>
 </html>
+
+

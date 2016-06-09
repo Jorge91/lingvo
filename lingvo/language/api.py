@@ -5,7 +5,7 @@ from language.models import Language, User_speaks_language, User_practices_langu
 from language.permissions import UserSpeaksLanguagesPermission, UserPracticesLanguagesPermission
 
 from language.serializers import LanguageSerializer, UserSpeaksLanguageSerializer, \
-    UserPracticesLanguageSerializer
+    UserPracticesLanguageSerializer, CreateUserPracticesLanguageSerializer, CreateUserSpeaksLanguageSerializer
 from utils.viewsets import MultipleSerializersViewSet
 
 
@@ -18,10 +18,12 @@ class LanguagesViewSet(MultipleSerializersViewSet, ListModelMixin):
 class UserSpeaksLanguageViewSet(MultipleSerializersViewSet, CreateModelMixin, DestroyModelMixin):
     queryset = User_speaks_language.objects.all()
     serializer_class = UserSpeaksLanguageSerializer
+    create_serializer_class = CreateUserSpeaksLanguageSerializer
     permission_classes = (IsAuthenticated, UserSpeaksLanguagesPermission)
 
 
 class UserPracticesLanguageViewSet(MultipleSerializersViewSet, CreateModelMixin, DestroyModelMixin):
     queryset = User_practices_language.objects.all()
     serializer_class = UserPracticesLanguageSerializer
+    create_serializer_class = CreateUserPracticesLanguageSerializer
     permission_classes = (IsAuthenticated, UserPracticesLanguagesPermission)

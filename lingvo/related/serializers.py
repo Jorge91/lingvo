@@ -5,6 +5,7 @@ from rest_framework.fields import ImageField
 from language.models import User_speaks_language, User_practices_language
 from language.serializers import UserSpeaksLanguageSerializer, UserPracticesLanguageSerializer
 from profile.models import Profile
+from related.settings import MAX_LANGUAGES_SHOWN
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'email', 'username')
 
-class ProfileSerializer(serializers.ModelSerializer):
+class RelatedProfileSerializer(serializers.ModelSerializer):
     speaks = serializers.SerializerMethodField('user_speaks')
     practices = serializers.SerializerMethodField('user_practices')
     user = UserSerializer()
@@ -20,15 +21,15 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('description', 'genre', 'born_date', 'user', 'speaks', 'practices', 'picture', 'id')
+        fields = ('description', 'genre', 'born_date', 'user', 'speaks', 'practices', 'picture')
         read_only = ('user', 'speaks', 'practices')
         depth = 1
 
 
     def user_speaks(self, obj):
-        a = User_speaks_language.objects.filter(user=obj.user)
+        a = User_speaks_language.objects.filter(user=obj.user)[:MAX_LANGUAGES_SHOWN]
         return UserSpeaksLanguageSerializer(a, many=True).data
 
     def user_practices(self, obj):
-        a = User_practices_language.objects.filter(user=obj.user)
+        a = User_practices_language.objects.filter(user=obj.user)[:MAX_LANGUAGES_SHOWN]
         return UserPracticesLanguageSerializer(a, many=True).data

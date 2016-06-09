@@ -1,0 +1,34 @@
+<div ng-controller="RelatedPeopleCtrl">
+
+    <div layout="row" layout-sm="column" layout-align="space-around center" ng-show="loading">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <md-card ng-show="!loading">
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="user in related" ng-click="null" ng-controller="UserListDetailCtrl">
+
+                <img ng-src="media/{{ user.picture }}" class="md-avatar" alt="{{ item.who }}"/>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ user.user.username }}</h3>
+                </div>
+                <div class="md-list-item-text" layout="column">
+                    <md-chips class="custom-chips" ng-model="user.speaks" name="language" readonly="true" md-max-chips="3">
+                        <md-chip-template>
+                            <strong>{{$chip.language.name}}</strong>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <div class="md-list-item-text" layout="column">
+                    <md-chips class="custom-chips" ng-model="user.practices" name="language" readonly="true" md-max-chips="3">
+                        <md-chip-template>
+                            <span>{{$chip.language.name}}</span>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+
+
+            </md-list-item>
+        </md-list>
+    </md-card>
+</div>
