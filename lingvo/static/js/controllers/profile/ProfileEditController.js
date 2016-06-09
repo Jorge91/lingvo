@@ -7,11 +7,7 @@
             var profile_url = 'api/1.0/profiles/';
             var id = null;
 
-            /*
-             *
-             * Profile updating
-             *
-             * */
+            // Profile fields
             $scope.updateProfile = function () {
                 var data = {
                     "description": $scope.edit_profile.description,
@@ -27,10 +23,10 @@
                     $scope.edit_profile.born_date = DateUtils.transformToInterface(data.born_date);
 
                     id = data.id;
+                    $scope.profileForm.$setPristine();
                 }).error(function (data) {
                 });
             };
-
 
             function loadProfile() {
                 $http.get(me_url).success(function (data) {
@@ -80,6 +76,12 @@
                     clickOutsideToClose: true
                 });
             };
+
+
+            // Languages management
+
+
+
 
 
             /*

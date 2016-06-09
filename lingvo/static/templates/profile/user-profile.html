@@ -7,6 +7,7 @@
                 <md-card-title>
 
                     <md-card-title-text>
+                        <form name="profileForm">
                         <span class="md-headline" style="color: #000">{{ profile.user.username }}</span><br>
                         <md-input-container>
                             <input ng-model="edit_profile.description" type="text" placeholder="Description">
@@ -32,9 +33,10 @@
 
                             </md-grid-tile>
                             <md-grid-tile md-colspan-gt-md="1" md-colspan-md="1" md-colspan-sm="1">
-                                <md-button class="md-warn md-raised" ng-click="updateProfile()">Update</md-button>
+                                <md-button class="md-warn md-raised" ng-disabled="profileForm.$pristine" ng-click="updateProfile()">Update</md-button>
                             </md-grid-tile>
                         </md-grid-list>
+                            </form>
 
                     </md-card-title-text>
 
@@ -44,11 +46,6 @@
                             <img class="img-circle" src="media/{{ profile.picture }}"
                                  ng-click="showPrerenderedDialog($event)">
                         </div>
-                        <!--<div ngf-drop ngf-select ng-model="files" class="drop-box"
-                             ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"
-                             accept="image/*,application/pdf"
-                             ngf-pattern="'image/*,application/pdf'">Drop images here
-                        </div>-->
                     </md-card-title-media>
 
 
