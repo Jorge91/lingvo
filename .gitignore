@@ -69,3 +69,7 @@ settings_develop.py
 
 # Node, Grunt 
 node_modules/
+
+bower_components/
+lingvo/static/built/
+static/built/
