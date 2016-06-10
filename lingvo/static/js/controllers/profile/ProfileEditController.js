@@ -5,6 +5,9 @@
 
             var me_url = 'api/1.0/users/me/';
             var profile_url = 'api/1.0/profiles/';
+            var languages_url = 'api/1.0/languages/';
+            var practice_url = 'api/1.0/languages/practice/';
+            var speak_url = 'api/1.0/languages/speak/';
             var id = null;
 
             // Profile fields
@@ -79,9 +82,67 @@
 
 
             // Languages management
+            function loadLanguages() {
+                $http.get(languages_url).success(function (data) {
+                    $scope.languages = data;
+                }).error(function (data) {
 
+                });
+            }
 
+            $scope.getMatches = function (text) {
+                text = text.toLowerCase();
+                var ret = $scope.languages.filter(function (d) {
+                    return d.name.toLowerCase().startsWith(text);
+                });
+                return ret;
+            };
 
+            $scope.addLanguage = function (type) {
+                console.log($scope.selectedSpeak);
+                if (type == 'speak') {
+                    var data = {
+                        user: $scope.profile.user.id,
+                        language: $scope.selectedSpeak.id
+                    };
+                    postLanguage(speak_url, data);
+
+                } else if (type == 'practice') {
+                    var data = {
+                        user: $scope.profile.user.id,
+                        language: $scope.selectedPractice.id
+                    };
+                    postLanguage(practice_url, data);
+                }
+
+            };
+
+            function postLanguage(url, data) {
+                $http.post(url, data).success(function (data) {
+                    loadProfile();
+                    $scope.selectedSpeak = "";
+                    $scope.selectedPractice = "";
+                    $scope.searchText = "";
+                    $scope.searchText2 = "";
+                }).error(function (data) {
+                });
+            }
+
+            $scope.deleteLanguage = function (type, id) {
+                if (type == 'speak') {
+                    _deleteLanguage(speak_url, id);
+
+                } else if (type == 'practice') {
+                    _deleteLanguage(practice_url, id);
+                }
+            };
+
+            function _deleteLanguage(url, id) {
+                $http.delete(url + id + "/").success(function (data) {
+                    loadProfile();
+                }).error(function (data) {
+                });
+            }
 
 
             /*
@@ -90,6 +151,7 @@
              *
              * */
             loadProfile();
+            loadLanguages();
 
         }
     ]);

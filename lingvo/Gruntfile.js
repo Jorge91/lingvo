@@ -28,6 +28,7 @@ module.exports = function(grunt) {
                     'bower_components/angular-translate/angular-translate.min.js',
                     'bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
                     'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
+                    'bower_components/angular-material-icons/angular-material-icons.min.js',
 
 
                     'bower_components/jquery/dist/jquery.js',

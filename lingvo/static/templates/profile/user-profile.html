@@ -8,35 +8,37 @@
 
                     <md-card-title-text>
                         <form name="profileForm">
-                        <span class="md-headline" style="color: #000">{{ profile.user.username }}</span><br>
-                        <md-input-container>
-                            <input ng-model="edit_profile.description" type="text" placeholder="Description">
-                        </md-input-container>
+                            <span class="md-headline" style="color: #000">{{ profile.user.username }}</span><br>
+                            <md-input-container>
+                                <input ng-model="edit_profile.description" type="text" placeholder="Description">
+                            </md-input-container>
 
 
-                        <md-grid-list md-cols-gt-md="9" md-cols-md="6" md-cols-sm="3" md-gutter="12px"
-                                      md-row-height="1:1">
-                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
-                                <md-input-container>
-                                    <md-radio-group ng-model="edit_profile.genre">
-                                        <md-radio-button value="MSC" class="md-primary">Boy</md-radio-button>
-                                        <md-radio-button value="FMN">Girl</md-radio-button>
-                                    </md-radio-group>
-                                </md-input-container>
-                            </md-grid-tile>
-                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
-                                <label for="date" class="md-warn">Born date:</label>
-                                <md-datepicker ng-model="edit_profile.born_date"
-                                               md-placeholder="Enter date"></md-datepicker>
-                            </md-grid-tile>
-                            <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+                            <md-grid-list md-cols-gt-md="9" md-cols-md="6" md-cols-sm="3" md-gutter="12px"
+                                          md-row-height="1:1">
+                                <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+                                    <md-input-container>
+                                        <md-radio-group ng-model="edit_profile.genre">
+                                            <md-radio-button value="MSC" class="md-primary">Boy</md-radio-button>
+                                            <md-radio-button value="FMN">Girl</md-radio-button>
+                                        </md-radio-group>
+                                    </md-input-container>
+                                </md-grid-tile>
+                                <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
+                                    <label for="date" class="md-warn">Born date:</label>
+                                    <md-datepicker ng-model="edit_profile.born_date"
+                                                   md-placeholder="Enter date"></md-datepicker>
+                                </md-grid-tile>
+                                <md-grid-tile md-colspan-gt-md="2" md-colspan-md="1" md-colspan-sm="1">
 
-                            </md-grid-tile>
-                            <md-grid-tile md-colspan-gt-md="1" md-colspan-md="1" md-colspan-sm="1">
-                                <md-button class="md-warn md-raised" ng-disabled="profileForm.$pristine" ng-click="updateProfile()">Update</md-button>
-                            </md-grid-tile>
-                        </md-grid-list>
-                            </form>
+                                </md-grid-tile>
+                                <md-grid-tile md-colspan-gt-md="1" md-colspan-md="1" md-colspan-sm="1">
+                                    <md-button class="md-warn md-raised" ng-disabled="profileForm.$pristine"
+                                               ng-click="updateProfile()">Update
+                                    </md-button>
+                                </md-grid-tile>
+                            </md-grid-list>
+                        </form>
 
                     </md-card-title-text>
 
@@ -55,6 +57,7 @@
 
 
             <div class="row">
+                <!-- Already speaks -->
                 <div class="col-md-6">
                     <md-card>
                         <md-toolbar layout="row" class="md-hue-3 _md layout-row">
@@ -70,10 +73,25 @@
                                     <h3>{{ lang.language.name }}</h3>
 
                                 </div>
+                                <ng-md-icon icon="delete" style="fill:red" ng-click="deleteLanguage('speak', lang.id)"></ng-md-icon>
                             </md-list-item>
                         </md-list>
                     </md-card>
+
+                    <!-- Add -->
+                    <md-card>
+                        <md-autocomplete md-selected-item="selectedSpeak" md-search-text="searchText"
+                                         md-items="item in getMatches(searchText)" md-item-text="item.name"
+                                         placeholder="Add new languages">
+                            <span md-highlight-text="searchText">{{ item.name }}</span>
+                            <img src="media/{{ item.flag }}" class="md-avatar-icon" width="15px">
+                        </md-autocomplete>
+                        <md-button class="md-primary md-raised" ng-click="addLanguage('speak')">Add</md-button>
+                    </md-card>
+
+
                 </div>
+                <!-- Wants to learn -->
                 <div class="col-md-6">
                     <md-card>
                         <md-toolbar layout="row" class="md-hue-3 _md layout-row">
@@ -89,9 +107,22 @@
                                     <h3>{{ lang.language.name }}</h3>
 
                                 </div>
+                                <ng-md-icon icon="delete" style="fill:red" ng-click="deleteLanguage('practice', lang.id)"></ng-md-icon>
                             </md-list-item>
                         </md-list>
                     </md-card>
+
+                    <!-- Add -->
+                    <md-card>
+                        <md-autocomplete md-selected-item="selectedPractice" md-search-text="searchText2"
+                                         md-items="lan in getMatches(searchText2)" md-item-text="lan.name"
+                                         placeholder="Add new languages">
+                            <span md-highlight-text="searchText">{{ lan.name }}</span>
+                            <img src="media/{{ lan.flag }}" class="md-avatar-icon" width="15px">
+                        </md-autocomplete>
+                        <md-button class="md-primary md-raised" ng-click="addLanguage('practice')">Add</md-button>
+                    </md-card>
+
                 </div>
             </div>
         </div>

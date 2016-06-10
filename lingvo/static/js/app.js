@@ -6,7 +6,8 @@
         'ngRoute',
         'ngCookies',
         'ngResource',
-        'ngFileUpload'
+        'ngFileUpload',
+        'ngMdIcons'
     ]);
 
 
@@ -97,12 +98,21 @@
                 '200', '300', '400', 'A100'],
             'contrastLightColors': undefined    // could also specify this if default was 'dark'
         });
-        
+
         $mdThemingProvider.theme('panelTheme')
             .primaryPalette('white')
             .backgroundPalette('indigo')
             .dark();
 
+
+    });
+
+
+    app.config(function ($mdIconProvider) {
+        // Configure URLs for icons specified by [set:]id.
+        $mdIconProvider
+            .defaultFontSet('fa')                   // This sets our default fontset className.
+            .defaultIconSet('static/built/icons.svg');   // Register a named icon set of SVGs
 
     });
 

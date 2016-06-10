@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from rest_framework.fields import ImageField
+
 from language.models import Language, User_speaks_language, User_practices_language
 
 class UserSerializer(serializers.ModelSerializer):
@@ -8,6 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id',)
 
 class LanguageSerializer(serializers.ModelSerializer):
+    flag = ImageField(max_length=None, allow_empty_file=False, use_url=False)
+
     class Meta:
         model = Language
 
