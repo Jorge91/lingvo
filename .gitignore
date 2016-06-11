@@ -71,5 +71,6 @@ settings_develop.py
 node_modules/
 
 bower_components/
-lingvo/static/built/
-static/built/
+/lingvo/static/built/
+static/built/*
+media/

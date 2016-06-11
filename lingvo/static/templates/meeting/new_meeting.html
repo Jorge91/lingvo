@@ -1,0 +1,38 @@
+<div ng-controller="NewMeetingCtrl">
+
+    <h2 class="md-display-1">Create a meeting</h2>
+    <h3 class="md-headline">Where:</h3>
+    <md-slider-container>
+        <md-slider flex ng-model="zoom" min="0" max="20" aria-label="blue" id="blue-slider" class="md-primary">
+        </md-slider>
+    </md-slider-container>
+
+
+    <ng-map zoom="{{ zoom }}" center="40.41323464818589, -3.6811065673828125" on-click="placeMarker()"
+            disable-default-u-i="true">
+    </ng-map>
+    <br>
+    <h3 class="md-headline">When:</h3>
+    <div layout="row" layout-align="center center">
+        <time-date-picker ng-model="dateValue"></time-date-picker>
+    </div>
+
+    <h3 class="md-headline">Why:</h3>
+    <div layout="row" layout-align="center center">
+        <md-input-container>
+            <input ng-model="name" type="text" placeholder="Name or reason of the meeting">
+        </md-input-container>
+    </div>
+    <div layout="row" layout-align="center center">
+        <p class="md-warn">{{ error }}</p>
+    </div>
+    <div layout="row" layout-align="center center">
+        <md-button class="md-raised" ng-click="createMeeting()"
+                   ng-disabled="lat == null || lng == null || dateValue == null || name == null">Save
+        </md-button>
+    </div>
+
+
+</div>
+
+</div>

@@ -25,6 +25,10 @@
     "angular-translate-loader-partial": "~2.9.2",
     "ng-file-upload": "^12.0.4",
     "angular-mocks": "~1.5.3",
-    "angular-material-icons": "^0.7.0"
+    "angular-material-icons": "^0.7.0",
+    "ngmap": "^1.17.3",
+    "angular-material-datetimepicker": "^1.4.0",
+    "moment": "^2.13.0",
+    "sc-date-time": "^1.1.6"
   }
 }

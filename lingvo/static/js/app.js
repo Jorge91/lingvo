@@ -7,7 +7,9 @@
         'ngCookies',
         'ngResource',
         'ngFileUpload',
-        'ngMdIcons'
+        'ngMdIcons',
+        'ngMap',
+        'scDateTime'
     ]);
 
 
@@ -41,6 +43,10 @@
                 templateUrl: '/static/templates/profile/profile-detail.html',
             }).when('/people/', {
                 templateUrl: '/static/templates/profile/people.html',
+            }).when('/new-meeting/', {
+                templateUrl: '/static/templates/meeting/new_meeting.html',
+            }).when('/meetings/:id', {
+                templateUrl: '/static/templates/meeting/meeting-detail.html',
             }).otherwise({
                 redirectTo: '/'
             });
@@ -114,6 +120,15 @@
             .defaultFontSet('fa')                   // This sets our default fontset className.
             .defaultIconSet('static/built/icons.svg');   // Register a named icon set of SVGs
 
+    });
+
+    app.value('scDateTimeConfig', {
+        defaultTheme: 'material',
+        defaultMode: 'full',
+        displayMode: 'full',
+        orientation: false,
+        autosave: true,
+        displayTwentyfour: true
     });
 
     //app.run(function run( $http, $cookies ){

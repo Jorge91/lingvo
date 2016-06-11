@@ -35,6 +35,8 @@ module.exports = function(grunt) {
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'bower_components/ng-file-upload/ng-file-upload-shim.min.js',
                     'bower_components/ng-file-upload/ng-file-upload.min.js',
+                    'bower_components/ngmap/build/scripts/ng-map.min.js',
+                    'bower_components/sc-date-time/dist/sc-date-time.js',
 
                     // Application scripts
                     'static/js/app.js',
@@ -42,6 +44,7 @@ module.exports = function(grunt) {
                     'static/js/controllers/*.js',
                     'static/js/controllers/main/*.js',
                     'static/js/controllers/profile/*.js',
+                    'static/js/controllers/meeting/*.js',
                     'static/js/directives/*.js',
                     'static/js/filters/*.js',
                     'static/js/authentication/services/*.js',
@@ -64,6 +67,7 @@ module.exports = function(grunt) {
             },
             style: {
                 src: [
+                    'bower_components/sc-date-time/dist/sc-date-time.css',
                     'bower_components/angular-material/modules/closure/menu/menu.min.css',
                     'bower_components/angular-material/angular-material.css',
                     'static/styles/style.css'
