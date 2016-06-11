@@ -41,6 +41,7 @@ module.exports = function(grunt) {
                     // Application scripts
                     'static/js/app.js',
                     'static/js/services/*.js',
+                    'static/js/factories/*.js',
                     'static/js/controllers/*.js',
                     'static/js/controllers/main/*.js',
                     'static/js/controllers/profile/*.js',

@@ -22,7 +22,7 @@
 
 <div ng-controller="MainCtrl" layout="column" style="height:500px;" ng-cloak="" class="sidenavdemoBasicUsage">
 
-    <section layout="row" style="min-height: 100em" flex="">
+    <section layout="row" flex="">
 
         <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"
                     md-disable-backdrop="" md-whiteframe="4">
@@ -43,12 +43,12 @@
                         </md-button>
                     </li>
                     <li>
-                        <md-button class="md-primary" href="#/meetings/" ng-click="close()">
+                        <md-button class="md-primary" href="#/discover-meetings/" ng-click="close()">
                             Search meetings
                         </md-button>
                     </li>
                     <li>
-                        <md-button class="md-primary" href="#/my-meetings/" ng-click="close()">
+                        <md-button class="md-primary" href="#/meetings/" ng-click="close()">
                             My meetings
                         </md-button>
                     </li>
@@ -60,8 +60,8 @@
                     </li>
                     <li></li>
                     <li>
-                        <md-button ng-click="close()" class="md-default" hide-gt-md="">
-                            Close
+                        <md-button ng-click="logout()" class="md-default">
+                            Logout
                         </md-button>
                     </li>
                 </ul>

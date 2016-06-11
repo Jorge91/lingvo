@@ -41,7 +41,7 @@ class MeetingViewSet(MultipleSerializersViewSet, RetrieveModelMixin, CreateModel
         if lat is not None and lon is not None:
             pnt = fromstr('POINT(' + str(lat) + ' ' + str(lon) + ')', srid=4326)
             queryset = queryset.filter(position__distance_lte=(pnt, D(m=distance)))
-
+            queryset = queryset.distance(pnt)
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = self.get_serializer(page, many=True)

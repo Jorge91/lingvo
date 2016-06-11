@@ -1,0 +1,22 @@
+<div ng-controller="MeetingDetailCtrl">
+    <h2 class="md-display-1">{{ meeting.properties.title }}</h2>
+    <ng-map zoom="18" center="{{ meeting.geometry.coordinates[0] }}, {{ meeting.geometry.coordinates[1] }}"
+            disable-default-u-i="false" tilt="45"
+            map-type-id="SATELLITE">
+    </ng-map>
+{{ meeting.geometry.coordinates[0] }}
+    <md-card>
+
+        <md-card-content>
+            {{ meeting.properties.attendances.length }} people going!
+        </md-card-content>
+        <md-card-footer>
+            {{ meeting.properties.time | date:'yyyy-MM-dd HH:mm' }}
+        </md-card-footer>
+    </md-card>
+    <div layout="row" layout-align="center center">
+        <md-button class="md-raised" ng-click="getIn()">Get me in!
+        </md-button>
+    </div>
+
+</div>

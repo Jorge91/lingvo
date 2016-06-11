@@ -5,7 +5,7 @@
     </div>
     <md-card ng-show="!loading">
         <md-list>
-            <md-list-item class="md-2-line" ng-repeat="user in related" ng-click="null" ng-controller="UserListDetailCtrl">
+            <md-list-item class="md-2-line" ng-repeat="user in related" ng-click="goToProfile(user.id)" ng-controller="UserListDetailCtrl">
 
                 <img ng-src="media/{{ user.picture }}" class="md-avatar" alt="{{ item.who }}"/>
                 <div class="md-list-item-text" layout="column">

@@ -47,6 +47,10 @@
                 templateUrl: '/static/templates/meeting/new_meeting.html',
             }).when('/meetings/:id', {
                 templateUrl: '/static/templates/meeting/meeting-detail.html',
+            }).when('/meetings/', {
+                templateUrl: '/static/templates/meeting/meeting-list.html',
+            }).when('/discover-meetings/', {
+                templateUrl: '/static/templates/meeting/meeting-discover.html',
             }).otherwise({
                 redirectTo: '/'
             });

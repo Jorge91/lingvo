@@ -1,3 +1,4 @@
+from django.contrib.gis.db.models.sql import DistanceField
 from django.utils import timezone
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
@@ -14,10 +15,11 @@ class AttendMeetingSerializer(serializers.ModelSerializer):
 
 class MeetingSerializer(GeoFeatureModelSerializer):
     attendances = serializers.SerializerMethodField('meeting_attendances')
+    distance = serializers.SerializerMethodField()
 
     class Meta:
         model = Meeting
-        fields = ('title', 'position', 'time', 'creator', 'id', 'attendances')
+        fields = ('title', 'position', 'time', 'creator', 'id', 'attendances', 'distance')
         read_only = ('creator', 'attendances')
         geo_field = 'position'
 
@@ -29,3 +31,10 @@ class MeetingSerializer(GeoFeatureModelSerializer):
     def meeting_attendances(self, obj):
         a = User_attends_meeting.objects.filter(meeting=obj)
         return AttendMeetingSerializer(a, many=True).data
+
+    def get_distance(self, obj):
+        distance = getattr(obj, "distance", None)
+        if distance is not None:
+            return distance.standard
+        else:
+            return ""

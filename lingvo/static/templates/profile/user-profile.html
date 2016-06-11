@@ -8,10 +8,13 @@
 
                     <md-card-title-text>
                         <form name="profileForm">
+
                             <span class="md-headline" style="color: #000">{{ profile.user.username }}</span><br>
-                            <md-input-container>
-                                <input ng-model="edit_profile.description" type="text" placeholder="Description">
-                            </md-input-container>
+                            <div layout="row" layout-align="left center">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <input ng-model="edit_profile.description" placeholder="Description">
+                                </md-input-container>
+                            </div>
 
 
                             <md-grid-list md-cols-gt-md="9" md-cols-md="6" md-cols-sm="3" md-gutter="12px"
@@ -73,7 +76,8 @@
                                     <h3>{{ lang.language.name }}</h3>
 
                                 </div>
-                                <ng-md-icon icon="delete" style="fill:red" ng-click="deleteLanguage('speak', lang.id)"></ng-md-icon>
+                                <ng-md-icon icon="delete" style="fill:red"
+                                            ng-click="deleteLanguage('speak', lang.id)"></ng-md-icon>
                             </md-list-item>
                         </md-list>
                     </md-card>
@@ -107,7 +111,8 @@
                                     <h3>{{ lang.language.name }}</h3>
 
                                 </div>
-                                <ng-md-icon icon="delete" style="fill:red" ng-click="deleteLanguage('practice', lang.id)"></ng-md-icon>
+                                <ng-md-icon icon="delete" style="fill:red"
+                                            ng-click="deleteLanguage('practice', lang.id)"></ng-md-icon>
                             </md-list-item>
                         </md-list>
                     </md-card>

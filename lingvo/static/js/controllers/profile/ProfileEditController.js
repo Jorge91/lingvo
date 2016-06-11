@@ -99,7 +99,6 @@
             };
 
             $scope.addLanguage = function (type) {
-                console.log($scope.selectedSpeak);
                 if (type == 'speak') {
                     var data = {
                         user: $scope.profile.user.id,

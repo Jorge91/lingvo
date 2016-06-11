@@ -2,14 +2,8 @@
 
     <h2 class="md-display-1">Create a meeting</h2>
     <h3 class="md-headline">Where:</h3>
-    <md-slider-container>
-        <md-slider flex ng-model="zoom" min="0" max="20" aria-label="blue" id="blue-slider" class="md-primary">
-        </md-slider>
-    </md-slider-container>
-
-
     <ng-map zoom="{{ zoom }}" center="40.41323464818589, -3.6811065673828125" on-click="placeMarker()"
-            disable-default-u-i="true">
+            disable-default-u-i="false">
     </ng-map>
     <br>
     <h3 class="md-headline">When:</h3>

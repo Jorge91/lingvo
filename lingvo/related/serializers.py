@@ -21,8 +21,8 @@ class RelatedProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('description', 'genre', 'born_date', 'user', 'speaks', 'practices', 'picture')
-        read_only = ('user', 'speaks', 'practices')
+        fields = ('description', 'genre', 'born_date', 'user', 'speaks', 'practices', 'picture', 'id')
+        read_only = ('user', 'speaks', 'practices', 'id')
         depth = 1
 
 
