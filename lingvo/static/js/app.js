@@ -51,6 +51,8 @@
                 templateUrl: '/static/templates/meeting/meeting-list.html',
             }).when('/discover-meetings/', {
                 templateUrl: '/static/templates/meeting/meeting-discover.html',
+            }).when('/chat/:id', {
+                templateUrl: '/static/templates/chat/chat-room.html',
             }).otherwise({
                 redirectTo: '/'
             });

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'django.contrib.sites',
+    'channels',
     'rest_framework',
     'rest_framework_gis',
     'rest_framework.authtoken',
@@ -186,3 +187,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'bower_components'),
 ]
+
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://localhost:6379"],
+        },
+        "ROUTING": "lingvo.routing.channel_routing",
+    },
+}
+

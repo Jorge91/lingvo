@@ -46,6 +46,7 @@ module.exports = function(grunt) {
                     'static/js/controllers/main/*.js',
                     'static/js/controllers/profile/*.js',
                     'static/js/controllers/meeting/*.js',
+                    'static/js/controllers/chat/*.js',
                     'static/js/directives/*.js',
                     'static/js/filters/*.js',
                     'static/js/authentication/services/*.js',
