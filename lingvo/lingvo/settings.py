@@ -189,7 +189,6 @@ STATICFILES_DIRS = [
 ]
 
 
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
@@ -199,4 +198,3 @@ CHANNEL_LAYERS = {
         "ROUTING": "lingvo.routing.channel_routing",
     },
 }
-

@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from meeting.models import Meeting, User_attends_meeting
 from meeting.permissions import MeetingPermission, AttendMeetingPermission
-from meeting.serializers import MeetingSerializer, AttendMeetingSerializer
+from meeting.serializers import MeetingSerializer, AttendMeetingSerializer, AttendMeetingListSerializer
 from meeting.settings import DEFAULT_DISTANCE
 from utils.viewsets import MultipleSerializersViewSet
 
@@ -54,9 +54,11 @@ class MeetingViewSet(MultipleSerializersViewSet, RetrieveModelMixin, CreateModel
 class AttendMeetingViewSet(MultipleSerializersViewSet, CreateModelMixin, ListModelMixin, DestroyModelMixin):
     queryset = User_attends_meeting.objects.all()
     serializer_class = AttendMeetingSerializer
+    list_serializer_class = AttendMeetingListSerializer
     permission_classes = (IsAuthenticated, AttendMeetingPermission)
 
     def list(self, request, *args, **kwargs):
+
         queryset = self.filter_queryset(self.get_queryset())
         queryset = queryset.filter(user=request.user)
 

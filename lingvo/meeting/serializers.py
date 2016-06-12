@@ -1,8 +1,14 @@
+from django.contrib.auth.models import User
 from django.contrib.gis.db.models.sql import DistanceField
 from django.utils import timezone
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from meeting.models import Meeting, User_attends_meeting
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'email', 'username')
 
 
 class AttendMeetingSerializer(serializers.ModelSerializer):
@@ -10,7 +16,17 @@ class AttendMeetingSerializer(serializers.ModelSerializer):
     class Meta:
         model = User_attends_meeting
         fields = ('user', 'meeting', 'id')
-        read_only = ('user', 'id')
+
+
+
+class AttendMeetingListSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = User_attends_meeting
+        fields = ('user', 'meeting', 'id')
+        depth = 2
+
 
 
 class MeetingSerializer(GeoFeatureModelSerializer):
@@ -38,3 +54,4 @@ class MeetingSerializer(GeoFeatureModelSerializer):
             return distance.standard
         else:
             return ""
+

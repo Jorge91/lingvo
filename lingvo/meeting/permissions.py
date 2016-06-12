@@ -15,7 +15,7 @@ class AttendMeetingPermission(CustomActionPermissions):
     def has_permission(self, request, view):
         if super(AttendMeetingPermission, self).has_permission(request, view):
             if view.action == 'create':
-                return request.data.get('user') == request.user.id
+                return str(request.data.get('user')) == str(request.user.id)
         return True
 
     def has_object_permission(self, request, view, obj):
