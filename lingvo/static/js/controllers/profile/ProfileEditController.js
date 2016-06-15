@@ -1,21 +1,27 @@
 (function () {
 
-    angular.module('lingvo').controller('ProfileEditCtrl', ['$scope', '$http', 'DateUtils', '$mdDialog', 'Upload',
-        function ($scope, $http, DateUtils, $mdDialog, Upload) {
+    angular.module('lingvo').controller('ProfileEditCtrl', ['$scope', '$http', 'DateUtils', '$mdDialog', 'Upload', '$routeParams',
+        function ($scope, $http, DateUtils, $mdDialog, Upload, $routeParams) {
 
             var me_url = 'api/1.0/users/me/';
             var profile_url = 'api/1.0/profiles/';
             var languages_url = 'api/1.0/languages/';
             var practice_url = 'api/1.0/languages/practice/';
             var speak_url = 'api/1.0/languages/speak/';
-            var id = null;
+            var id = $scope.id = $routeParams.id;
 
             // Profile fields
             $scope.updateProfile = function () {
+                var born_date = null;
+                console.log($scope.edit_profile.born_date);
+                if ($scope.edit_profile.born_date != null) {
+                    born_date = DateUtils.transformToRESTyDate($scope.edit_profile.born_date);
+                }
+
                 var data = {
                     "description": $scope.edit_profile.description,
                     "genre": $scope.edit_profile.genre,
-                    "born_date": DateUtils.transformToRESTyDate($scope.edit_profile.born_date)
+                    "born_date": born_date
                 };
 
                 $http.patch(profile_url + id + '/', data).success(function (data) {
@@ -23,7 +29,11 @@
                     $scope.edit_profile = {};
                     $scope.edit_profile.description = data.description;
                     $scope.edit_profile.genre = data.genre;
-                    $scope.edit_profile.born_date = DateUtils.transformToInterface(data.born_date);
+                    if (data.born_date != null) {
+                        $scope.edit_profile.born_date = DateUtils.transformToInterface(data.born_date);
+                    } else {
+                        $scope.edit_profile.born_date = null;
+                    }
 
                     id = data.id;
                     $scope.profileForm.$setPristine();
@@ -37,7 +47,11 @@
                     $scope.edit_profile = {};
                     $scope.edit_profile.description = data.description;
                     $scope.edit_profile.genre = data.genre;
-                    $scope.edit_profile.born_date = DateUtils.transformToInterface(data.born_date);
+                    if (data.born_date != null) {
+                        $scope.edit_profile.born_date = DateUtils.transformToInterface(data.born_date);
+                    } else {
+                        $scope.edit_profile.born_date = null;
+                    }
 
                     id = data.id;
 
