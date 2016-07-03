@@ -1,0 +1,11 @@
+<div ng-controller="ChatListCtrl">
+    <md-card>
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="chat in chats" ng-controller="ChatListDetailCtrl" href="/#/chat/{{ userChat.id }}">
+                Chat with {{ userChat.username }}
+            </md-list-item>
+        </md-list>
+    </md-card>
+
+
+</div>

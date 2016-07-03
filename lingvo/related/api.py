@@ -18,12 +18,10 @@ class RelatedViewSet(MultipleSerializersViewSet, ListModelMixin):
     def list(self, request, *args, **kwargs):
         user = request.user
 
-        # spoken_languages = User_speaks_language.objects.filter(user=user).values_list('language', flat=True)
         practice_languages = User_practices_language.objects.filter(user=user).values_list('language', flat=True)
 
         users_speak = User_speaks_language.objects.filter(language__in=practice_languages).values('user').annotate(
             dcount=Count('language')).values_list('user', flat=True).order_by('dcount')
-        # users_practice = User_practices_language.objects.filter(language__in=spoken_languages).values('user').annotate(dcount=Count('language')).values_list('user', flat=True)
 
         queryset = Profile.objects.filter(Q(user__in=users_speak))
         queryset = queryset.exclude(user=user)

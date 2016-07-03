@@ -8,6 +8,7 @@ from profile import api_urls as profile_api_urls
 from language import api_urls as language_api_urls
 from meeting import api_urls as meeting_api_urls
 from related import api_urls as related_api_urls
+from chat import api_urls as chat_api_urls
 
 
 urlpatterns = [
@@ -29,5 +30,6 @@ urlpatterns = [
     url(r'^api/1.0/', include(language_api_urls)),
     url(r'^api/1.0/', include(meeting_api_urls)),
     url(r'^api/1.0/', include(related_api_urls)),
+    url(r'^api/1.0/', include(chat_api_urls)),
 ]
 

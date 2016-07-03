@@ -1,13 +1,32 @@
 <div ng-controller="ChatCtrl">
-    <md-list flex style="max-height: 400px">
-        <md-subheader class="md-no-sticky">Attending meetings</md-subheader>
-        <md-list-item class="md-1-line" ng-repeat="item in messages" ng-click="null">
-            <div class="md-list-item-text md-warn" ng-class="{'md-warn': style == true}" layout="column">
-                <p>{{ item.text }}</p>
-            </div>
-        </md-list-item>
-        <md-divider></md-divider>
-    </md-list>
-    <input type="text" ng-model="message">
-    <md-button class="raised" ng-click="sendMessage()">Send</md-button>
+    <md-content flex layout="row" layout-align="center">
+        <md-list flex style="overflow-y:scroll; height:400px;" id="chatListId">
+            <md-list-item class="md-1-line" ng-repeat="item in messages" ng-click="null">
+
+                <div ng-if="item.style == false" layout="row" layout-align="start center" style="width: 100%">
+                    <md-card>
+                        <md-card-text class="md-warn"
+                                      style="padding-left: 20px; padding-right: 20px;"
+                                      ng-style="item.style && {'background-color':'lightgreen', 'float':'right'} || {'background-color': 'lightyellow'}">
+                            <p>{{ item.text }}</p>
+                        </md-card-text>
+                    </md-card>
+                </div>
+                <div ng-if="item.style == true" layout="row" layout-align="end center" style="width: 100%">
+                    <md-card>
+                        <md-card-text class="md-warn"
+                                      style="padding-left: 20px; padding-right: 20px;"
+                                      ng-style="item.style && {'background-color':'lightgreen', 'float':'right'} || {'background-color': 'lightyellow'}">
+                            <p>{{ item.text }}</p>
+                        </md-card-text>
+                    </md-card>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+    </md-content>
+    <md-content flex layout="row" layout-align="center">
+        <input type="text" ng-model="message" ng-keyup="$event.keyCode == 13 && sendMessage()">
+        <md-button class="md-raised md-warn" ng-click="sendMessage()">Send</md-button>
+    </md-content>
 </div>

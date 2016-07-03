@@ -25,13 +25,14 @@ class AttendMeetingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User_attends_meeting
         fields = ('user', 'meeting', 'id')
-        depth = 2
+        depth = 1
 
 
 
 class MeetingSerializer(GeoFeatureModelSerializer):
     attendances = serializers.SerializerMethodField('meeting_attendances')
     distance = serializers.SerializerMethodField()
+    user = UserSerializer()
 
     class Meta:
         model = Meeting

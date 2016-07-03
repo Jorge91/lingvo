@@ -12,7 +12,6 @@ class Profile(models.Model):
     genre = models.CharField(max_length=3, choices=GENRES, null=True, blank=True)
     picture = models.ImageField(upload_to='pictures', null=True, blank=True)
     born_date = models.DateField(null=True, blank=True)
-    # meeting_distance
 
     def __unicode__(self):
         return unicode(self.user.username)

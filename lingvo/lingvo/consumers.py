@@ -5,7 +5,6 @@ from channels import Group
 from channels.auth import channel_session_user_from_http, channel_session_user
 from channels.sessions import channel_session
 
-# agrega persistencia de sesiones a los canales (para que pertenezcan a salas)
 from django.contrib.auth.models import User
 from django.db.models import Q
 
@@ -28,7 +27,6 @@ def ws_connect(message):
         channel_layer=message.channel_layer
     ).add(message.reply_channel)
 
-    # agregamos la sala a la que pertenece a manera de sesion
     message.channel_session['room'] = chat.label
 
 
@@ -40,7 +38,7 @@ def ws_receive(message):
     data = json.loads(message['text'])
 
     if data:
-        m = Message.objects.create(chat=chat, message=data['message'])
+        m = Message.objects.create(chat=chat, message=data['message'], user=message.user)
 
         Group(
             'chat-' + label,

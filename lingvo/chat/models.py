@@ -16,6 +16,7 @@ class Message(models.Model):
     chat = models.ForeignKey(Chat, related_name='messages')
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
+    user = models.ForeignKey(User, related_name='user_message', null=True)
 
     def __unicode__(self):
         return unicode(self.chat) + ' - ' + unicode(self.message)
